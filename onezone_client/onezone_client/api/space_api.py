@@ -475,7 +475,8 @@ class SpaceApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        # kwargs['_return_http_data_only'] = True
+        kwargs['_return_http_data_only'] = False
         if kwargs.get('async_req'):
             return self.create_space_with_http_info(**kwargs)  # noqa: E501
         else:
