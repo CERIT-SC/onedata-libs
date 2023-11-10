@@ -219,6 +219,8 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
 
         :return: The token for basic HTTP authentication.
         """
+        if not self.username and not self.password:
+            return None
         return urllib3.util.make_headers(
             basic_auth=self.username + ':' + self.password
         ).get('authorization')
