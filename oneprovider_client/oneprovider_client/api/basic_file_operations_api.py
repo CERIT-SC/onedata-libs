@@ -568,7 +568,11 @@ class BasicFileOperationsApi(object):
 
         query_params = []
         if 'attribute' in params:
-            query_params.append(('attribute', params['attribute']))  # noqa: E501
+            if isinstance(params['attribute'], list) or isinstance(params['attribute'], tuple):
+                for param in params['attribute']:
+                    query_params.append(('attribute', param))  # noqa: E501
+            else:
+                query_params.append(('attribute', params['attribute']))  # noqa: E501
 
         header_params = {}
 
@@ -993,7 +997,11 @@ class BasicFileOperationsApi(object):
         if 'prefix' in params:
             query_params.append(('prefix', params['prefix']))  # noqa: E501
         if 'attribute' in params:
-            query_params.append(('attribute', params['attribute']))  # noqa: E501
+            if isinstance(params['attribute'], list) or isinstance(params['attribute'], tuple):
+                for param in params['attribute']:
+                    query_params.append(('attribute', param))  # noqa: E501
+            else:
+                query_params.append(('attribute', params['attribute']))  # noqa: E501
 
         header_params = {}
 
