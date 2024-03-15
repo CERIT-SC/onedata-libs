@@ -187,7 +187,8 @@ class RESTClientObject(object):
                 # Pass a `string` parameter directly in the body to support
                 # other content types than Json when `body` argument is
                 # provided in serialized form
-                elif isinstance(body, str):
+                elif (isinstance(body, str)
+                      or (isinstance(body, bytes) and headers['Content-Type'] == "application/octet-stream")):
                     request_body = body
                     r = self.pool_manager.request(
                         method, url,
